@@ -50,6 +50,14 @@ public class Tank extends javax.swing.JFrame  implements DefenceObserver {
         btn2T = new javax.swing.JButton();
         btn3T = new javax.swing.JButton();
         btn4T = new javax.swing.JButton();
+        btnSoldier = new javax.swing.JButton();
+        lblSoldier = new javax.swing.JLabel();
+        lblAmmo = new javax.swing.JLabel();
+        btnAmmo = new javax.swing.JButton();
+        spinnerSoldier = new javax.swing.JSpinner();
+        spinnerAmmo = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +80,11 @@ public class Tank extends javax.swing.JFrame  implements DefenceObserver {
         lblAreaNotClearedTank.setText("Area Not Cleared");
 
         btn1T.setText("Shoot");
+        btn1T.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1TActionPerformed(evt);
+            }
+        });
 
         btn2T.setText("Missile Opearation");
 
@@ -79,28 +92,34 @@ public class Tank extends javax.swing.JFrame  implements DefenceObserver {
 
         btn4T.setText("Rotate Shooting");
 
+        btnSoldier.setText("Set Soldier");
+        btnSoldier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoldierActionPerformed(evt);
+            }
+        });
+
+        btnAmmo.setText("Set Ammo");
+        btnAmmo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAmmoActionPerformed(evt);
+            }
+        });
+
+        spinnerAmmo.setModel(new javax.swing.SpinnerNumberModel(1000, null, 1000, 1));
+
+        jLabel3.setText("Soldier  Count :");
+
+        jLabel4.setText("Ammo Count  :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addComponent(checkBoxPositionTank, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblAreaNotClearedTank, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(42, 42, 42)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtTank, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnSendTank)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn1T)
@@ -109,24 +128,74 @@ public class Tank extends javax.swing.JFrame  implements DefenceObserver {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn2T)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn4T)))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                                .addComponent(btn4T)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(36, 36, 36)
+                                .addComponent(lblAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(spinnerSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spinnerAmmo)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 109, Short.MAX_VALUE)
+                                .addComponent(btnSoldier))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAmmo))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(lblAreaNotClearedTank, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(checkBoxPositionTank, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTank, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSendTank))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn1T)
                     .addComponent(btn3T))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn2T)
-                    .addComponent(btn4T))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkBoxPositionTank, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAreaNotClearedTank, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn2T)
+                        .addComponent(btn4T))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lblSoldier)
+                            .addComponent(spinnerSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSoldier))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(lblAmmo)
+                            .addComponent(spinnerAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAmmo))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxPositionTank)
+                    .addComponent(lblAreaNotClearedTank))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -140,17 +209,47 @@ public class Tank extends javax.swing.JFrame  implements DefenceObserver {
     }// </editor-fold>//GEN-END:initComponents
 boolean position=false;
     private void checkBoxPositionTankItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxPositionTankItemStateChanged
-        if(evt.getStateChange()==java.awt.event.ItemEvent.SELECTED){
-            position=true;
-        }else{
-            position=false;
-        }
+        position = evt.getStateChange()==java.awt.event.ItemEvent.SELECTED;
     }//GEN-LAST:event_checkBoxPositionTankItemStateChanged
 
     private void btnSendTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendTankActionPerformed
                 String textMessage=txtTank.getText();
-         mainController .receivedMessage("Tank : "+textMessage);
+                 mainController .receivedMessage("Tank : "+textMessage);
     }//GEN-LAST:event_btnSendTankActionPerformed
+
+    //set soldier count
+    private void btnSoldierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoldierActionPerformed
+          
+        if(position==true){
+              lblSoldier.setText(spinnerSoldier.getValue().toString());
+        }  else{
+       btnSoldier.disable();
+        
+        }
+    }//GEN-LAST:event_btnSoldierActionPerformed
+
+    
+    //set Ammo count
+    private void btnAmmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmmoActionPerformed
+            if(position==true){
+             lblAmmo.setText(spinnerAmmo.getValue().toString());
+
+        }else{
+              btnAmmo.disable();
+        
+        }    
+    }//GEN-LAST:event_btnAmmoActionPerformed
+
+    //reduce Ammo Count after shoot
+    private void btn1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1TActionPerformed
+              if(position==true){
+                  int val=Integer.parseInt(lblAmmo.getText());
+                int newVal=val-1;
+                lblAmmo.setText(Integer.toString(newVal));
+              }else{
+                 btnAmmo.disable();
+              }
+    }//GEN-LAST:event_btn1TActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,10 +262,18 @@ boolean position=false;
     private javax.swing.JButton btn2T;
     private javax.swing.JButton btn3T;
     private javax.swing.JButton btn4T;
+    private javax.swing.JButton btnAmmo;
     private javax.swing.JButton btnSendTank;
+    private javax.swing.JButton btnSoldier;
     private javax.swing.JCheckBox checkBoxPositionTank;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAmmo;
     private javax.swing.JButton lblAreaNotClearedTank;
+    private javax.swing.JLabel lblSoldier;
+    private javax.swing.JSpinner spinnerAmmo;
+    private javax.swing.JSpinner spinnerSoldier;
     private javax.swing.JTextField txtTank;
     private javax.swing.JTextPane txtTankDisplay;
     // End of variables declaration//GEN-END:variables
