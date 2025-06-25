@@ -4,15 +4,13 @@
  */
 package defence.system;
 
-import javax.swing.Timer;
-import java.awt.event.*;
-
 /**
  *
  * @author 94768
  */
 public class Helicopter extends javax.swing.JFrame implements DefenceObserver {
    private MainController mainController;
+   
 
     /**
      * Creates new form Helicopter
@@ -30,6 +28,8 @@ public class Helicopter extends javax.swing.JFrame implements DefenceObserver {
     public MainController getMainColler(){
             return mainController;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,7 +120,7 @@ public class Helicopter extends javax.swing.JFrame implements DefenceObserver {
 
         btn3.setText("Laser Operation");
 
-        spinner.setModel(new javax.swing.SpinnerNumberModel(0, null, 1000, 1));
+        spinner.setModel(new javax.swing.SpinnerNumberModel(1000, 0, 1000, 1));
         spinner.setValue(1000);
         spinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -135,7 +135,7 @@ public class Helicopter extends javax.swing.JFrame implements DefenceObserver {
             }
         });
 
-        jLabel2.setText(" Bullet Count :");
+        jLabel2.setText(" Ammo Count :");
 
         jLabel3.setText("Soldier Count :");
 
@@ -312,6 +312,7 @@ public class Helicopter extends javax.swing.JFrame implements DefenceObserver {
         }
     }//GEN-LAST:event_btnSetSoldiersActionPerformed
 
+
  
     /**
      * @param args the command line arguments
@@ -389,6 +390,6 @@ public class Helicopter extends javax.swing.JFrame implements DefenceObserver {
     @Override
     public void updateText(String text) {
            txtDisplayHelicopter.setText("Main controller :"+text);
-
+        
     }
 }

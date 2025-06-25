@@ -111,6 +111,8 @@ public  class Submarine extends javax.swing.JFrame  implements DefenceObserver {
             }
         });
 
+        spinnerAmmo.setModel(new javax.swing.SpinnerNumberModel(1000, 0, 1000, 1));
+
         lblSoldier.setText("jLabel1");
 
         jLabel2.setText("Soldier Count :");
@@ -142,7 +144,7 @@ public  class Submarine extends javax.swing.JFrame  implements DefenceObserver {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(spinnerAmmo, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                .addComponent(spinnerAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51))))
@@ -157,8 +159,7 @@ public  class Submarine extends javax.swing.JFrame  implements DefenceObserver {
                         .addGap(18, 18, 18)
                         .addComponent(spinnerSolder, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSoldier)
-                        .addContainerGap())))
+                        .addComponent(btnSoldier))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +199,7 @@ public  class Submarine extends javax.swing.JFrame  implements DefenceObserver {
                     .addComponent(lblAreaNotClearedSubmarine)
                     .addComponent(checkBoxSubmarine))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFieldSubmarine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

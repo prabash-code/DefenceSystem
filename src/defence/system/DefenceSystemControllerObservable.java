@@ -31,6 +31,7 @@ public class DefenceSystemControllerObservable  {
         for(DefenceObserver defenceObserver: defenceObserverList)
             defenceObserver.update(sliderLevel);
     }
+
     
       public void observerNotifyText(String text){
         for(DefenceObserver defenceObserver: defenceObserverList)
@@ -42,5 +43,27 @@ public class DefenceSystemControllerObservable  {
             defenceObserver.setAreaClearedText(text);
     }
     
-    
+    public void sendPrivate(String text,String item){
+    if("Helicopter".equalsIgnoreCase(item)){
+            for(DefenceObserver defenceObserver:defenceObserverList){
+              //  if(defenceObserver instanceof Helicopter){
+                        defenceObserver.updateText(text);
+              //  }
+            }
+            
+    } else if ("Tank".equalsIgnoreCase(item)){
+            for(DefenceObserver defenceObserver:defenceObserverList){
+                if(defenceObserver instanceof Tank){
+                        defenceObserver.updateText(text);
+                }
+            }
+            
+    }else if("Submerine".equalsIgnoreCase(item)){
+            for(DefenceObserver defenceObserver:defenceObserverList){
+                if(defenceObserver instanceof Submarine){
+                        defenceObserver.updateText(text);
+                }
+            }
+        }  
+    }
 }
